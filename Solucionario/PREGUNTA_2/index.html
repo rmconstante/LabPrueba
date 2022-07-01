@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<body style="background-image: url(../../Imagenes/fondo.jpg) ;background-size: cover;">
+<div class="container">
+  <div class="row">
+    <div class="section" style="margin-left: 10%;margin-top: 10%;">
+      <img src="../../Imagenes/selloespe.jpg" alt="">
+    </div>
+    <div class="section" id="enunciado" style="margin-left: 10%;margin-top: 5%;">
+      <h1 style="text-align: center;">Pregunta 2</h1>
+      <p>2)Mediante un archivo XML, analizar dicho archivo XML utilizando el siguiente Script:</p>
+      <ul style="list-style-type: none;">
+        <li>xmlhttp = new XMLHttpRequest();<br>
+          xmlhttp.open("GET", "ejemplo.xml", false);<br>
+          xmlhttp.send();<br>
+          xmlDoc = xmlhttp.responseXML;<br>
+        </li>
+      </ul>
+      <div class="section" id="enunciado" style="margin-left: 45%;margin-top: 5%;" style="text-align:center;">
+      <button style="align-self: center;" type="button" onclick="CargarDatos()">Obtener Datos</button>
+      </div>
+      <div class="section" id="resolucion" style="margin-top: 5%;">
+        <div class="section" style="margin-top: 5%;"></div>
+        <div class="section" style="margin-top: 5%;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  xmlhttp = new XMLHttpRequest(); //Creacion del objeto XMLHttpRequest
+  xmlhttp.open("GET", "ejemplo.xml", false);//Enviar la solicitud para obtener el archivo ejemplo.xml
+  xmlhttp.send();
+  xmlDoc = xmlhttp.responseXML;//Funcion que va a ser llamada cuando la solicitud reciba una respuesta
+  //Funcion para recuperar los datos del txt
+  function CargarDatos() {
+    document.getElementById("resolucion").innerHTML = '';
+    for (var i = 0; i <= 5; i++) {
+      document.getElementById("resolucion").innerHTML += xmlDoc.getElementsByTagName("nombre")[i].childNodes[0].nodeValue+" come "+xmlDoc.getElementsByTagName("comida")[i].childNodes[0].nodeValue+"|";
+    }
+  }
+</script>
+
+</body>
+</html>
